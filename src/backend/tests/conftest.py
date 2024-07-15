@@ -318,6 +318,13 @@ async def entities(odk_project):
     yield entities
 
 
+@pytest.fixture(scope="function")
+async def central_forms(db):
+    """Get central forms data."""
+    forms = await central_crud.get_form_list(db)
+    yield forms
+
+
 # @pytest.fixture(scope="function")
 # def get_ids(db, project):
 #     user_id_query = text(f"SELECT id FROM {DbUser.__table__.name} LIMIT 1")
